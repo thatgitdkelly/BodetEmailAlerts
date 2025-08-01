@@ -31,6 +31,11 @@ Further analysis was performed using `tcpdump` and `Wireshark` to isolate event 
 The script can be managed as a systemd service:
 
 ```bash
+sudo nano /etc/systemd/system/bodet_listener.service
+
+```
+
+```bash
 [Unit]
 Description=Bodet Listener Service
 After=network.target
@@ -45,8 +50,10 @@ StandardError=journal
 [Install]
 WantedBy=multi-user.target
 
+```
 
 ```bash
 sudo systemctl enable bodet-listener.service
 sudo systemctl start bodet-listener.service
 sudo systemctl status bodet-listener.service
+```
