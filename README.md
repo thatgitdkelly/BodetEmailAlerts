@@ -28,7 +28,23 @@ Further analysis was performed using `tcpdump` and `Wireshark` to isolate event 
 
 ## Systemd Integration
 
-The script is managed as a systemd service:
+The script can be managed as a systemd service:
+
+```bash
+[Unit]
+Description=Bodet Listener Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u /home/dietpi/bodet2.0.1.py #or whatever you named the script
+WorkingDirectory=/home/dietpi
+Restart=always
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
 
 ```bash
 sudo systemctl enable bodet-listener.service
